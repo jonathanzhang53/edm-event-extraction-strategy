@@ -21,4 +21,5 @@ def get_events():
         return jsonify({'error': 'Invalid source parameter'}), 400
 
     events = adapter.fetch_events()
-    return jsonify(events)
+    events_dict = [event.__dict__ for event in events]
+    return jsonify(events_dict)
